@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rizqanmr.jobsearch.data.network.model.JobItem
@@ -37,20 +39,36 @@ class JobFragment : Fragment() {
     }
 
     private fun setupView() {
-        jobAdapter = JobAdapter()
-        binding.rvJob.apply {
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            setHasFixedSize(true)
-            adapter = jobAdapter.withLoadStateFooter(
-                footer = LoadingStateAdapter { jobAdapter.retry() }
-            )
-        }
-
-        jobAdapter.setJobListener(object : JobAdapter.JobListener {
-            override fun onItemClick(itemJob: ItemJobBinding, itemResponse: JobItem?) {
-                Toast.makeText(requireContext(), "title: ${itemResponse?.title}", Toast.LENGTH_SHORT).show()
+        with(binding) {
+            jobAdapter = JobAdapter()
+            rvJob.apply {
+                layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                setHasFixedSize(true)
+                jobAdapter.addLoadStateListener { loadState ->
+                    if (loadState.refresh is LoadState.Loading && jobAdapter.itemCount == 0) {
+                        //loading state
+                        rvJob.isVisible = false
+                        pbLoading.isVisible = true
+                    } else if (loadState.refresh is LoadState.NotLoading && jobAdapter.itemCount > 0) {
+                        rvJob.isVisible = true
+                        pbLoading.isVisible = false
+                    } else if (loadState.refresh is LoadState.NotLoading && jobAdapter.itemCount == 0) {
+                        //empty state
+                        rvJob.isVisible = false
+                        pbLoading.isVisible = false
+                    }
+                }
+                adapter = jobAdapter.withLoadStateFooter(
+                    footer = LoadingStateAdapter { jobAdapter.retry() }
+                )
             }
-        })
+
+            jobAdapter.setJobListener(object : JobAdapter.JobListener {
+                override fun onItemClick(itemJob: ItemJobBinding, itemResponse: JobItem?) {
+                    Toast.makeText(requireContext(), "title: ${itemResponse?.title}", Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
     }
 
     private fun subscribeToLiveData() {
