@@ -9,12 +9,28 @@
         android:id="@+id/nav_home"
         android:name="com.rizqanmr.jobsearch.presentation.job.JobFragment"
         android:label="@string/job_list"
-        tools:layout="@layout/fragment_job" />
+        tools:layout="@layout/fragment_job">
+
+        <action
+            android:id="@+id/action_job_item_to_job_detail"
+            app:destination="@id/nav_job_detail"
+            app:launchSingleTop="true">
+            <argument
+                android:name="id"
+                app:argType="string" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_account"
         android:name="com.rizqanmr.jobsearch.presentation.account.AccountFragment"
         android:label="@string/title_account"
         tools:layout="@layout/fragment_account" />
+
+    <activity
+        android:id="@+id/nav_job_detail"
+        android:name="com.rizqanmr.jobsearch.presentation.jobdetail.JobDetailActivity"
+        android:label="@string/job_detail"
+        tools:layout="@layout/activity_job_detail" />
 
 </navigation>

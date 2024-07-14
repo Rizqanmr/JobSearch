@@ -10,4 +10,5 @@
     <color name="green_light">#8BC34A</color>
     <color name="green_dark">#4CAF50</color>
     <color name="placeholder">#CECECE</color>
+    <color name="blue_url">#2743DE</color>
 </resources>

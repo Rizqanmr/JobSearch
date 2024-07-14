@@ -35,4 +35,8 @@ data class JobItem(
 
     @field:SerializedName("url")
     val url: String? = ""
-)
+) {
+    fun isFulltime(): String {
+        return if (type == "Full Time") "Yes" else "No"
+    }
+}

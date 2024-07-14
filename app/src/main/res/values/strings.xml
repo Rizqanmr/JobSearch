@@ -9,9 +9,14 @@
     <string name="try_again">Try Again</string>
     <string name="description">Description</string>
     <string name="location">Location</string>
-    <string name="full_time">Full Time</string>
+    <string name="full_time">Fulltime</string>
     <string name="apply">Apply</string>
     <string name="icon_expand_collapse_filter">Icon Expand Collapse Filter</string>
     <string name="search">Search</string>
     <string name="job_list">Job List</string>
+    <string name="company">Company</string>
+    <string name="go_to_website">Go to Website</string>
+    <string name="job_specification">Job Specification</string>
+    <string name="title">Title</string>
+    <string name="job_detail">Job Detail</string>
 </resources>
