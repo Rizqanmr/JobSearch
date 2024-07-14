@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.rizqanmr.jobsearch.R
 import com.rizqanmr.jobsearch.databinding.FragmentAccountBinding
@@ -38,5 +39,17 @@ class AccountFragment : Fragment() {
         viewModel.imageUrl.observe(viewLifecycleOwner) {
             binding.ivAvatar.setCircleImageUrl(it, R.drawable.ic_person)
         }
+        binding.btnLogout.setOnClickListener { showLogoutConfirmDialog() }
+    }
+
+    private fun showLogoutConfirmDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes") { _, _ ->
+                requireActivity().finishAffinity()
+            }
+            .setNegativeButton("No", null)
+            .show()
     }
 }
