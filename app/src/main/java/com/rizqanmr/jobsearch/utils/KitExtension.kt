@@ -1,6 +1,9 @@
 package com.rizqanmr.jobsearch.utils
 
+import android.text.Html
+import android.text.Spanned
 import android.widget.ImageView
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.rizqanmr.jobsearch.R
@@ -25,4 +28,9 @@ fun ImageView.setCircleImageUrl(url: String?, placeholder: Int?= null) {
         glideRequest.placeholder(it)
     }
     glideRequest.into(this)
+}
+
+fun TextView.contentFromHtml(source: String) {
+    val spanned: Spanned = Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY)
+    this.text = spanned
 }

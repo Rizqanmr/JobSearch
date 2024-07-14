@@ -11,4 +11,6 @@ interface JobRepository {
         location: String? = "",
         fullTime: String? = "false"
     ) : Result<List<JobItem>>
+
+    suspend fun getJobDetail(id: String) : Result<JobItem>
 }

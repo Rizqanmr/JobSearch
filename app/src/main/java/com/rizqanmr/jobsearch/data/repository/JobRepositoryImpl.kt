@@ -17,4 +17,8 @@ class JobRepositoryImpl @Inject constructor(
     ): Result<List<JobItem>> = safeApiCall {
         apiService.getListJobs(page, description, location, fullTime)
     }
+
+    override suspend fun getJobDetail(id: String): Result<JobItem> = safeApiCall {
+        apiService.getJobDetail(id)
+    }
 }
