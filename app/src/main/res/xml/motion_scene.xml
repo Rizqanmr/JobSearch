@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/expand"
+        motion:constraintSetStart="@+id/collapse"
+        motion:duration="300">
+
+        <OnClick
+            motion:clickAction="transitionToEnd"
+            motion:targetId="@id/icon_expand_collapse" />
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/collapse"
+        motion:constraintSetStart="@+id/expand"
+        motion:duration="300">
+
+        <OnClick
+            motion:clickAction="transitionToEnd"
+            motion:targetId="@id/icon_expand_collapse" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/expand">
+        <Constraint
+            android:id="@+id/filter_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp170"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintBottom_toTopOf="@+id/rv_job"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/rv_job"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_container" />
+
+        <Constraint
+            android:id="@+id/icon_expand_collapse"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/et_description_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:alpha="1">
+            <Transform android:rotation="180"/>
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/et_description_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp40"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:alpha="1" />
+
+        <Constraint
+            android:id="@+id/et_location_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp40"
+            android:alpha="1"
+            app:layout_constraintEnd_toEndOf="@id/et_description_layout"
+            app:layout_constraintStart_toStartOf="@id/et_description_layout"
+            app:layout_constraintTop_toBottomOf="@id/et_description_layout" />
+
+        <Constraint
+            android:id="@+id/cb_full_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:alpha="1"
+            app:layout_constraintBottom_toBottomOf="@id/filter_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_location_layout" />
+
+        <Constraint
+            android:id="@+id/btn_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp40"
+            android:alpha="1"
+            app:layout_constraintBottom_toBottomOf="@id/filter_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_location_layout" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/collapse">
+        <Constraint
+            android:id="@+id/filter_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp64"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/rv_job"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/filter_container" />
+
+        <Constraint
+            android:id="@+id/icon_expand_collapse"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/et_description_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:alpha="1">
+            <Transform android:rotation="0"/>
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/et_description_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp16"
+            android:layout_marginEnd="@dimen/dp40"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:alpha="1" />
+
+        <Constraint
+            android:id="@+id/et_location_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            app:layout_constraintEnd_toEndOf="@id/et_description_layout"
+            app:layout_constraintStart_toStartOf="@id/et_description_layout"
+            app:layout_constraintTop_toBottomOf="@id/et_description_layout" />
+
+        <Constraint
+            android:id="@+id/cb_full_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            app:layout_constraintBottom_toBottomOf="@id/filter_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_location_layout" />
+
+        <Constraint
+            android:id="@+id/btn_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            app:layout_constraintBottom_toBottomOf="@id/filter_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_location_layout" />
+
+    </ConstraintSet>
+
+</MotionScene>

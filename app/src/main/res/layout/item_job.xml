@@ -15,6 +15,7 @@
         android:id="@+id/cv_job"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp12"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/dp8"
         app:cardElevation="@dimen/dp4"
