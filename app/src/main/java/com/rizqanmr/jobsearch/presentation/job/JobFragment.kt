@@ -1,9 +1,10 @@
-package com.rizqanmr.jobsearch.presentation.home
+package com.rizqanmr.jobsearch.presentation.job
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,5 +34,30 @@ class JobFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupView()
         subscribeToLiveData()
+    }
+
+    private fun setupView() {
+        jobAdapter = JobAdapter()
+        binding.rvJob.apply {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            setHasFixedSize(true)
+            adapter = jobAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter { jobAdapter.retry() }
+            )
+        }
+
+        jobAdapter.setJobListener(object : JobAdapter.JobListener {
+            override fun onItemClick(itemJob: ItemJobBinding, itemResponse: JobItem?) {
+                Toast.makeText(requireContext(), "title: ${itemResponse?.title}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun subscribeToLiveData() {
+        viewModel.getListJobs().observe(viewLifecycleOwner) {
+            if (it != null) {
+                jobAdapter.submitData(lifecycle, it)
+            }
+        }
     }
 }
