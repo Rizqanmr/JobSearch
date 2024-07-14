@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Job Search</string>
+    <string name="title_home">Home</string>
+    <string name="title_account">Account</string>
+    <string name="user_avatar">User Avatar</string>
+    <string name="logout">Logout</string>
+    <string name="job_image">Job Image</string>
+    <string name="arrow_right_icon">Arrow Right Icon</string>
+    <string name="try_again">Try Again</string>
+    <string name="description">Description</string>
+    <string name="location">Location</string>
+    <string name="full_time">Full Time</string>
+    <string name="apply">Apply</string>
+    <string name="icon_expand_collapse_filter">Icon Expand Collapse Filter</string>
+    <string name="search">Search</string>
 </resources>
