@@ -6,9 +6,11 @@ import com.rizqanmr.jobsearch.data.network.model.JobItem
 
 interface JobVMContract {
 
-    fun getListJobs(
-        description: String? = "",
-        location: String? = "",
-        fullTime: String? = "false"
-    ): LiveData<PagingData<JobItem>>
+    fun getListJobs(): LiveData<PagingData<JobItem>>
+
+    fun setSearchParameters(
+        description: String?,
+        location: String?,
+        fullTime: String?
+    )
 }

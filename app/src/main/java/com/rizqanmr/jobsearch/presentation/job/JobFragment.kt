@@ -36,6 +36,7 @@ class JobFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupView()
         subscribeToLiveData()
+        filterSearch()
     }
 
     private fun setupView() {
@@ -75,6 +76,18 @@ class JobFragment : Fragment() {
         viewModel.getListJobs().observe(viewLifecycleOwner) {
             if (it != null) {
                 jobAdapter.submitData(lifecycle, it)
+            }
+        }
+    }
+
+    private fun filterSearch() {
+        with(binding) {
+            btnApply.setOnClickListener {
+                val description = etDescription.text.toString()
+                val location = etLocation.text.toString()
+                val fulltime = if (cbFullTime.isChecked) "true" else "false"
+
+                viewModel.setSearchParameters(description, location, fulltime)
             }
         }
     }
