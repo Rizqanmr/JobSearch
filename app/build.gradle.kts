@@ -7,6 +7,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 //importing local.properties file
@@ -62,7 +63,6 @@ kapt {
 }
 
 dependencies {
-
     val lifecycleVersion = "2.8.3"
     val hiltVersion = "2.50"
     val retrofitVersion = "2.9.0"
