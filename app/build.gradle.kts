@@ -67,6 +67,7 @@ dependencies {
     val hiltVersion = "2.50"
     val retrofitVersion = "2.9.0"
     val chuckerVersion = "4.0.0"
+    val navigationVersion = "2.7.7"
 
     // Android X
     implementation("androidx.core:core-ktx:1.13.1")
@@ -74,11 +75,12 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.activity:activity-ktx:1.9.0")
     implementation("androidx.fragment:fragment-ktx:1.8.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
+    implementation("androidx.paging:paging-runtime-ktx:3.3.0")
 
     // Material Google
     implementation("com.google.android.material:material:1.12.0")
