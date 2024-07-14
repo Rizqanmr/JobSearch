@@ -13,4 +13,5 @@
     <string name="apply">Apply</string>
     <string name="icon_expand_collapse_filter">Icon Expand Collapse Filter</string>
     <string name="search">Search</string>
+    <string name="job_list">Job List</string>
 </resources>
